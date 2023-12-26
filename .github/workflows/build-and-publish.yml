@@ -7,10 +7,19 @@ on:
     release:
         types: [ created ]
 
-#todo add test to this pipeline
 jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 20
+            -   run: yarn install
+            -   run: yarn test
+
     publish-npm:
-        #        needs: build
+        needs: test
         runs-on: ubuntu-latest
         steps:
             -   uses: actions/checkout@v3
@@ -23,13 +32,3 @@ jobs:
             -   run: yarn publish
                 env:
                     NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-#  build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: 20
-#      - run: yarn install
-#      - run: yarn build
-#      - run: npm test

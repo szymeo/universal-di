@@ -4,8 +4,9 @@
         "outDir": "../../dist/out-tsc",
         "module": "commonjs",
         "jsx": "react-jsx",
-        "types": ["jest", "node", "@testing-library/jest-dom"],
+        "types": ["node", "@testing-library/jest-dom"],
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "esModuleInterop": true
     },
     "files": ["src/test-setup.ts"],

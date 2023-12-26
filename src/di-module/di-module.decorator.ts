@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import {InvalidModuleConfigError} from '../errors/invalid-module-config.error';
 import {Provider} from '../models/provider.model';
 import {Class} from '../types';

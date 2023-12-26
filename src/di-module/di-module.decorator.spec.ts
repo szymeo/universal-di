@@ -1,4 +1,5 @@
-import { Module } from './di-module.decorator';
+import {Module} from './di-module.decorator';
+import {describe, expect, it} from 'vitest';
 
 describe('DIModuleDecorator', () => {
     it.each([{}, { imports: [] }, { providers: [] }, { imports: [], providers: [] }])(

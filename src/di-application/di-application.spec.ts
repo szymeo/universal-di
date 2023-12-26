@@ -1,7 +1,8 @@
-import { Injectable } from '../decorators/injectable';
-import { Module } from '../di-module/di-module.decorator';
-import { Injector } from '../injector';
-import { DIApplication } from './di-application';
+import {Injectable} from '../decorators/injectable';
+import {Module} from '../di-module/di-module.decorator';
+import {Injector} from '../injector';
+import {DIApplication} from './di-application';
+import {describe, expect, it} from 'vitest';
 
 describe.skip('DIApplication', () => {
     let Application: DIApplication;

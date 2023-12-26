@@ -1,7 +1,7 @@
-/* eslint-disable max-classes-per-file */
 import {Inject, Injectable} from '../decorators';
 import {DIModule} from './di-module';
 import {InjectionToken} from '../models';
+import {describe, expect, it, vi} from 'vitest';
 
 describe('DIModule', () => {
     const MY_TOKEN = new InjectionToken('MY_TOKEN');
@@ -27,7 +27,7 @@ describe('DIModule', () => {
     });
 
     it('injects providers', () => {
-        const nestedStubProviderHandleSpy = jest.fn();
+        const nestedStubProviderHandleSpy = vi.fn();
 
         @Injectable()
         class MultiStubProvider {}
@@ -86,7 +86,7 @@ describe('DIModule', () => {
             ],
         }).bootstrap();
 
-        Module.injector.get(StubProvider).handle();
+        (Module.injector.get(StubProvider) as StubProvider).handle();
 
         expect(nestedStubProviderHandleSpy).toHaveBeenCalledWith(
             'my_token_value',
@@ -96,7 +96,7 @@ describe('DIModule', () => {
     });
 
     it('creates tree from imported modules', () => {
-        const nestedStubProviderHandleSpy = jest.fn();
+        const nestedStubProviderHandleSpy = vi.fn();
 
         @Injectable()
         class StubProvider {
@@ -135,7 +135,7 @@ describe('DIModule', () => {
             ],
         }).bootstrap();
 
-        ChildModule.injector.get(StubProvider).handle();
+        (ChildModule.injector.get(StubProvider) as StubProvider).handle();
 
         expect(() => MainModule.injector.get(StubProvider)).not.toThrowError('No provider for StubProvider');
         expect(nestedStubProviderHandleSpy).toHaveBeenCalledWith('my_token_value', [
@@ -145,7 +145,7 @@ describe('DIModule', () => {
     });
 
     it('provider from imported module is global', () => {
-        const nestedStubProviderHandleSpy = jest.fn();
+        const nestedStubProviderHandleSpy = vi.fn();
 
         @Injectable()
         class StubProvider {
@@ -169,14 +169,14 @@ describe('DIModule', () => {
             providers: [],
         }).bootstrap();
 
-        RootModule.injector.get(StubProvider).handle();
+        (RootModule.injector.get(StubProvider) as StubProvider).handle();
 
         expect(nestedStubProviderHandleSpy).toHaveBeenCalled();
         expect(() => ChildModule.injector.get(StubProvider)).not.toThrowError('No provider for StubProvider');
     });
 
     it('should throw specific error messages', () => {
-        const nestedStubProviderHandleSpy = jest.fn();
+        const nestedStubProviderHandleSpy = vi.fn();
 
         @Injectable()
         class StubProvider {
@@ -270,7 +270,7 @@ describe('DIModule', () => {
     });
 
     it('allows child provider to use another child export', () => {
-        const nestedStubProviderHandleSpy = jest.fn();
+        const nestedStubProviderHandleSpy = vi.fn();
 
         @Injectable()
         class StubProvider {}
@@ -301,13 +301,13 @@ describe('DIModule', () => {
 
         RootModule.bootstrap();
 
-        const handle = () => ChildModule.injector.get(StubProvider2).handle();
+        const handle = () => (ChildModule.injector.get(StubProvider2) as StubProvider2).handle();
         expect(handle).not.toThrow();
         expect(ChildModule.injector.get(StubProvider)).toEqual(expect.any(StubProvider));
     });
 
     it('uses singleton scope', () => {
-        const constructorSpy = jest.fn();
+        const constructorSpy = vi.fn();
 
         @Injectable()
         class StubProvider {
@@ -348,8 +348,8 @@ describe('DIModule', () => {
         });
 
         RootModule.bootstrap();
-        ChildModuleA.injector.get(StubProvider2).method();
-        ChildModuleB.injector.get(StubProvider3).method();
+        (ChildModuleA.injector.get(StubProvider2) as StubProvider2).method();
+        (ChildModuleB.injector.get(StubProvider3) as StubProvider3).method();
 
         expect(constructorSpy).toHaveBeenCalledTimes(1);
     });

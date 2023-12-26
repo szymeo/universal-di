@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '../decorators';
 import {DIContainer} from './di-container';
 import {InjectionToken} from '../models';
+import {beforeEach, describe, expect, it, vi} from 'vitest';
 
 describe('DIContainer', () => {
     let diContainer: DIContainer;
@@ -83,7 +84,7 @@ describe('DIContainer', () => {
 
     describe('caching providers', () => {
         it('caches class token provider', () => {
-            const stubProviderConstructedSpy = jest.fn();
+            const stubProviderConstructedSpy = vi.fn();
 
             @Injectable()
             class StubProvider {
@@ -101,7 +102,7 @@ describe('DIContainer', () => {
         });
 
         it('caches class provider', () => {
-            const stubProviderConstructedSpy = jest.fn();
+            const stubProviderConstructedSpy = vi.fn();
 
             @Injectable()
             class StubProvider {
@@ -134,7 +135,7 @@ describe('DIContainer', () => {
         }
 
         it('resolves injected params values', () => {
-            const stubProviderCallbackSpy = jest.fn();
+            const stubProviderCallbackSpy = vi.fn();
             const myValueTokenStub = 'abc123';
 
             @Injectable()

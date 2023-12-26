@@ -6,6 +6,7 @@ import {InjectorStub} from '../injector/injector.stub';
 import {InjectionToken} from '../models/injection-token.model';
 import {DIContextProvider} from './di-context-provider';
 import {useInjection} from './useInjection';
+import {describe, vi, beforeEach, afterEach, it, expect, MockInstance} from 'vitest';
 
 describe('useInjection', () => {
     const tokenStub = new InjectionToken<string>('TOKEN_STUB');
@@ -17,10 +18,11 @@ describe('useInjection', () => {
     };
 
     let injector: Injector;
-    let consoleErrorSpy: jest.SpyInstance;
+    let consoleErrorSpy: MockInstance;
 
     beforeEach(() => {
-        consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+        consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {
+        });
     });
 
     afterEach(() => {
@@ -32,7 +34,7 @@ describe('useInjection', () => {
 
         render(
             <DIContextProvider injector={injector}>
-                <ComponentStub />
+                <ComponentStub/>
             </DIContextProvider>,
         );
 
@@ -43,7 +45,7 @@ describe('useInjection', () => {
     it('throws error for no context', () => {
         injector = new InjectorStub(valueStub);
 
-        const renders = () => render(<ComponentStub />);
+        const renders = () => render(<ComponentStub/>);
 
         expect(renders).toThrowError('No di context provided');
     });
