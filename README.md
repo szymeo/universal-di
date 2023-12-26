@@ -167,7 +167,7 @@ export function ProductListComponent() {
 
 ### Authors
 [![szymeo](https://avatars.githubusercontent.com/u/11583029?v=4&s=40)](https://github.com/szymeo)
-[![szymeo](https://avatars.githubusercontent.com/u/45360754?v=4&s=40)](https://github.com/bswitalski)
+[![bartoszswitalski](https://avatars.githubusercontent.com/u/45360754?v=4&s=40)](https://github.com/bartoszswitalski)
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: LICENSE.md
