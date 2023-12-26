@@ -1,10 +1,11 @@
 {
     "name": "universal-di",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Universal Dependency Injection for Frontend with Angular-like API",
     "scripts": {
         "build": "tsc -p tsconfig.lib.json",
-        "test": "vitest"
+        "test": "vitest",
+        "test:ci": "vitest run"
     },
     "author": "Szymon Gracki <dev.sgracki@gmail.com>",
     "license": "MIT",
@@ -14,14 +15,15 @@
     },
     "homepage": "https://github.com/szymeo/universal-di",
     "devDependencies": {
+        "@swc/core": "^1.3.101",
         "@testing-library/jest-dom": "^6.1.5",
         "@testing-library/react": "^14.1.2",
         "@types/node": "^8.0.31",
         "jsdom": "^23.0.1",
         "react-dom": "^18.2.0",
+        "rollup-plugin-swc": "^0.2.1",
         "typescript": "5.3.3",
-        "vitest": "^1.1.0",
-        "rollup-plugin-swc": "^0.2.1"
+        "vitest": "^1.1.0"
     },
     "dependencies": {
         "react": "18.2.0",
