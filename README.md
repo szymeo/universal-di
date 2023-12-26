@@ -172,8 +172,8 @@ export function ProductListComponent() {
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: LICENSE.md
 
-[github-action-image]: https://github.com/szymeo/universal-di/actions/workflows/npm-publish.yml/badge.svg
-[github-action-url]: https://github.com/szymeo/universal-di/actions/workflows/npm-publish.yml
+[github-action-image]: https://github.com/szymeo/universal-di/actions/workflows/build-and-publish.yml/badge.svg
+[github-action-url]: https://github.com/szymeo/universal-di/actions/workflows/build-and-publish.yml
 
 [npm-url]: https://npmjs.org/package/universal-di
 [npm-version-image]: https://badge.fury.io/js/universal-di.svg
