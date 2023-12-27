@@ -1,6 +1,6 @@
 {
     "name": "universal-di",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Universal Dependency Injection for Frontend with Angular-like API",
     "scripts": {
         "build": "tsc -p tsconfig.lib.json",

@@ -388,7 +388,7 @@ describe('DIModule', () => {
         expect(ChildModule.injector.get(StubProviderFromChild)).toEqual(expect.any(StubProviderFromChild));
     });
 
-    it.only('provides from multiple modules', () => {
+    it('provides from multiple modules', () => {
         @Injectable()
         class StubProviderFromParentA {}
 
